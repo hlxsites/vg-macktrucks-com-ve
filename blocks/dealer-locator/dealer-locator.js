@@ -22,6 +22,7 @@ export default async function decorate(block) {
     consolidateFilters: true,
     selectedBrand: 'mack',
     dataSource: datasource,
+    country: 'Venezuela',
     amenities: ['Appointments Accepted', 'Bilingual Service', 'Driver Lounge', 'Free Pickup and Delivery', 'Hotel Shuttle', 'Internet Service', 'Laundry', 'Showers', 'Telephones', 'Trailer Parking', 'Video Games'],
   };
 
@@ -243,10 +244,8 @@ export default async function decorate(block) {
             </div>
             <div class="detail-share">
 
-                <a id="share" class="accordion">
-                    <img src="/blocks/dealer-locator/images/Share.svg"/>
-                    SHARE
-                </a>
+                <button type="button" class="accordion"><img
+                        src="/blocks/dealer-locator/images/Share.svg"/><span>SHARE</span></button>
                 <div class="accordion-panel">
                     <input type="text" id="share-link" value="" onclick="this.select();"/>
                 </div>
@@ -270,8 +269,7 @@ export default async function decorate(block) {
                         <br/>
                         <div id="address2">
                             <div></div>
-                            </div>
-                        <br/>
+                        </div>
                         <div id="city-state-zip">
                             <div></div>
                         </div>
@@ -292,9 +290,9 @@ export default async function decorate(block) {
                                     class="tooltiptext link">Open website</span></i>
                         </div>
                     </li>
-                    <li>
-                        <img src="/blocks/dealer-locator/images/Mail.svg"/>
-                        <div id="email" ></div>
+                    <li id="email">
+
+                        <div></div>
                     </li>
 
 
@@ -314,7 +312,7 @@ export default async function decorate(block) {
     <div class="panel-card">
         <div class="panel-container">
             <article class="teaser">
-                <div class="marker-main">
+                <div class="marker-main" style="width: 15%;">
                     <img id="marker" src=""/>
                 </div>
                 <div class="dealerPanelContainer">
@@ -367,12 +365,12 @@ export default async function decorate(block) {
 <div id="sidebar-filter" style="display: none;">
     <div class="row" style="padding-top: 25px;">
         <div class="panel-card result-item">
-            <div class="panel-container">
+            <div class="panel-container panel-filter-distance">
                 <span class="header-title">Filter By Distance</span>
                 <ul>
                     <li>
                         <div>
-                            <input name=range-filter class=range-filter type=range id=range value=75 list=steplist
+                            <input name=range-filter class=range-filter type=range id=range value=100 list=steplist
                                    max=100 min=25 step=25 onchange="$.fn.radiusChange();"/>
                             <datalist id=steplist class=sliderticks>
                                 <option>25</option>
@@ -397,12 +395,29 @@ export default async function decorate(block) {
                         </label>
                     </li>
                     <li>
-                        <label for=rental-leasing>Rental &amp; Leasing
-                            <input name=type-filter type=checkbox id=rental-leasing value=Leasing/>
+                        <label for=sales-service>Sales, service &amp; Parts
+                            <input name=type-filter type=checkbox id=sales-service value=Sales, Service & Parts />
                             <span class="checkmark"></span>
                         </label>
                     </li>
-
+                    <li>
+                        <label for=services-parts>Service &amp; Parts
+                            <input name=type-filter type=checkbox id=services-parts value=Service and Parts />
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label for=customer-service>Customer Service Center
+                            <input name=type-filter type=checkbox id=customer-service value=Customer Service Centre />
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label for=head-office>Head office
+                            <input name=type-filter type=checkbox id=head-office value=/>
+                            <span class="checkmark"></span>
+                        </label>
+                    </li>
                 </ul>
             </div>
         </div>
