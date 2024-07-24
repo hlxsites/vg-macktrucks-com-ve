@@ -29,6 +29,88 @@
       }
     ]
   },
+  "tools": {
+    "total": 7,
+    "offset": 0,
+    "limit": 7,
+    "data": [
+      {
+        "name": "GIT_OWNER",
+        "value": "hlxsites"
+      },
+      {
+        "name": "GIT_REPO",
+        "value": "vg-macktrucks-com"
+      },
+      {
+        "name": "GLOBAL_SITEMAP_URL",
+        "value": "/sitemap.xml"
+      },
+      {
+        "name": "v1SectionClasses",
+        "value": "[\"background\",\"background-top\",\"bg-paper\",\"bg-white-paper\",\"dark-background\",\"center\",\"flex-center\",\"font-l\",\"font-m\",\"font-s\",\"font-xl\",\"font-xxl\",\"font-xs\",\"font-xxs\",\"helvetica-55\",\"helvetica-65\",\"helvetica-75\",\"helvetica-56\",\"helvetica-66\",\"helvetica-76\",\"gap\",\"highlight\",\"line-separator\",\"magazine-listing-content\",\"no-first-line\",\"padding-0\",\"padding-16\",\"padding-32\",\"section-width\",\"text-white\",\"text-black\",\"responsive-title\",\"title-line\",\"title-margin-bottom-0\",\"title-white\",\"wrapper-margin-top-0\"]"
+      },
+      {
+        "name": "v2SectionClasses",
+        "value": "[\"header-with-mark\",\"recalls-padding\",\"section--background-with-dots\",\"section--black-background\",\"section--gray-background\",\"section--light-gray-background\",\"section--no-gap\",\"section--no-vertical-padding\",\"section--with-background\"]"
+      },
+      {
+        "name": "v1AllowedBlocks",
+        "value": "[\"v2-embed\"]"
+      },
+      {
+        "name": "v2AllowedBlocks",
+        "value": "[\"embed\",\"footer\",\"fragment\",\"header\",\"iframe\",\"modal\"]"
+      }
+    ]
+  },
+  "truckConfigurator": {
+    "total": 8,
+    "offset": 0,
+    "limit": 8,
+    "data": [
+      {
+        "model": "anthem",
+        "pdp path": "/trucks/anthem/",
+        "configurator path": "/trucks/anthem/build/#/anthem"
+      },
+      {
+        "model": "granite",
+        "pdp path": "/trucks/granite-series/",
+        "configurator path": "/trucks/granite-series/build/#/granite"
+      },
+      {
+        "model": "lr",
+        "pdp path": "/trucks/lr-series/",
+        "configurator path": "/trucks/lr-series/build/#/lr"
+      },
+      {
+        "model": "lr electric",
+        "pdp path": "/trucks/lr-electric/",
+        "configurator path": "/trucks/lr-electric/build/#/lr"
+      },
+      {
+        "model": "md series",
+        "pdp path": "/trucks/md/",
+        "configurator path": "/trucks/md/build/#/md"
+      },
+      {
+        "model": "md electric",
+        "pdp path": "/trucks/md-electric/",
+        "configurator path": "/trucks/md-electric/build/#/md"
+      },
+      {
+        "model": "pinnacle",
+        "pdp path": "/trucks/pinnacle-series/",
+        "configurator path": "/trucks/pinnacle-series/build/#/pinnacle"
+      },
+      {
+        "model": "terrapro",
+        "pdp path": "/trucks/terrapro-series/",
+        "configurator path": "/trucks/terrapro-series/build/#/terrapro"
+      }
+    ]
+  },
   "headerConfig": {
     "total": 2,
     "offset": 0,
@@ -129,62 +211,16 @@
       }
     ]
   },
-  "truckConfigurator": {
-    "total": 8,
-    "offset": 0,
-    "limit": 8,
-    "data": [
-      {
-        "model": "anthem",
-        "pdp path": "/trucks/anthem/",
-        "configurator path": "/trucks/anthem/configurator/#/anthem"
-      },
-      {
-        "model": "granite",
-        "pdp path": "/trucks/granite-series/",
-        "configurator path": "/trucks/granite-series/configurator/#/granite"
-      },
-      {
-        "model": "lr",
-        "pdp path": "/trucks/lr-series/",
-        "configurator path": "/trucks/lr-series/configurator/#/lr"
-      },
-      {
-        "model": "lr electric",
-        "pdp path": "/trucks/lr-electric/",
-        "configurator path": "/trucks/lr-electric/configurator/#/lr"
-      },
-      {
-        "model": "md series",
-        "pdp path": "/trucks/md/",
-        "configurator path": "/trucks/md/configurator/#/md"
-      },
-      {
-        "model": "md electric",
-        "pdp path": "/trucks/md-electric/",
-        "configurator path": "/trucks/md-electric/configurator/#/md"
-      },
-      {
-        "model": "pinnacle",
-        "pdp path": "/trucks/pinnacle-series/",
-        "configurator path": "/trucks/pinnacle-series/configurator/#/pinnacle"
-      },
-      {
-        "model": "terrapro",
-        "pdp path": "/trucks/terrapro-series/",
-        "configurator path": "/trucks/terrapro-series/configurator/#/terrapro"
-      }
-    ]
-  },
   ":version": 3,
   ":names": [
     "truckConfiguratorUrls",
     "searchUrls",
+    "tools",
+    "truckConfigurator",
     "headerConfig",
     "cookieValues",
     "magazineConfig",
-    "fgrep",
-    "truckConfigurator"
+    "fgrep"
   ],
   ":type": "multi-sheet"
 }

@@ -183,7 +183,7 @@
   .v2-truck-features__slide-image--active picture,
   .v2-truck-features__slide-image--active img {
     width: 50vw;
-    max-width: 800px;
+    max-width: 700px;
     height: auto;
   }
 
@@ -199,6 +199,14 @@
     .v2-truck-features__images-list {
     left: 0;
     right: unset;
+  }
+}
+
+
+@media (min-width: 744px) and (min-height: 800px) {
+  .v2-truck-features__slide-image--active picture,
+  .v2-truck-features__slide-image--active img {
+    max-width: 800px;
   }
 }
 
@@ -231,8 +239,6 @@
 }
 
 @media (min-width: 1440px) {
-  .v2-truck-features__slide-image--active picture,
-  .v2-truck-features__slide-image--active img,
   .v2-truck-features--image-shadow .v2-truck-features__slide-image--active::after {
     min-width: 800px;
   }

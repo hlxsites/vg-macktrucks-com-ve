@@ -904,7 +904,7 @@ main .section.responsive-title h1 {
   --testimonial-letter-spacing: -0.0225rem;
 
   /* In page navigation */
-  --inpage-navigation-height: 0px;
+  --inpage-navigation-height: 0;
 
   /* Buttons */
   --button-primary-color: var(--c-primary-black);
@@ -1159,6 +1159,7 @@ main .section.responsive-title h1 {
 }
 
 /* Section Background colors */
+.redesign-v2 .section--primary-gray-background,
 .redesign-v2 .section--black-background,
 .redesign-v2 .section--graphite-background,
 .redesign-v2 .section--gray-background,
@@ -1177,7 +1178,11 @@ main .section.responsive-title h1 {
   --navigation-line-default-color: #393939;
   --text-color: var(--c-primary-white);
   --color-icon: var(--c-primary-white);
-  --text-subtle: #8D8D8D;
+  --text-subtle: #8d8d8d;
+}
+
+.redesign-v2 .section--primary-gray-background {
+  --section-background: var(--c-primary-gray);
 }
 
 .redesign-v2 .section--black-background {

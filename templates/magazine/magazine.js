@@ -4,8 +4,6 @@ import {
 } from '../../scripts/lib-franklin.js';
 import {
   createElement,
-  MAGAZINE_CONFIGS,
-  extractObjectFromArray,
 } from '../../scripts/common.js';
 
 async function buildArticleHero() {
@@ -116,20 +114,6 @@ export default async function decorate(doc) {
   const authorName = getMetadata('author');
   const author = createElement('p', { classes: 'author-text' });
   author.innerText = authorName;
-
-  const articleDate = getMetadata('date');
-  if (articleDate) {
-    const date = new Date(articleDate);
-    const locale = getMetadata('locale');
-    const { DATE_LANGUAGE, DATE_OPTIONS } = MAGAZINE_CONFIGS;
-
-    const parsedOptions = JSON.parse(DATE_OPTIONS);
-    const extractedOptions = extractObjectFromArray(parsedOptions);
-    const dateFormat = new Intl.DateTimeFormat(locale || DATE_LANGUAGE, extractedOptions);
-
-    // eslint-disable-next-line no-unused-vars
-    const localeDate = dateFormat.format(date);
-  }
 
   const defaultContent = container.querySelector('.default-content-wrapper');
   const subscribeContent = container.querySelector('.magazine-subscribe-wrapper');
