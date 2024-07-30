@@ -7,8 +7,8 @@ import {
   variantsClassesToBEM,
 } from '../../scripts/common.js';
 
-// Define break point/s
 const blockName = 'v2-product-listing';
+const variantClasses = ['with-filter', 'with-dots'];
 
 function getActiveFilterButton() {
   const AllFilterButtons = document.querySelectorAll(`.${blockName}__button-list .${blockName}__segment-button`);
@@ -80,7 +80,10 @@ function buildProductInfoDom(prodEle) {
     info.classList.add(`${blockName}__product-info`);
 
     [...buttons].forEach((b) => {
+      const parent = b.parentElement;
+      b.classList.add('button--large');
       buttonContainer.appendChild(b);
+      parent.remove(); // Remove the previous empty button container
     });
     info.appendChild(buttonContainer);
 
@@ -194,7 +197,6 @@ function handleListeners(dropdownWrapper) {
 }
 
 export default function decorate(block) {
-  const variantClasses = ['with-filter', 'with-dots'];
   variantsClassesToBEM(block.classList, variantClasses, blockName);
 
   const productElement = block.querySelectorAll(`.${blockName} > div`);

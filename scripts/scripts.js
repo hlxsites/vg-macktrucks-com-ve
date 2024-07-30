@@ -343,6 +343,7 @@ export function decorateLinks(block) {
 function decorateSectionBackgrounds(main) {
   const variantClasses = [
     'light-gray-background',
+    'primary-gray-background',
     'gray-background',
     'graphite-background',
     'black-background',

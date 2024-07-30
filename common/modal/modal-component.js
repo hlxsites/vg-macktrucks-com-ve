@@ -35,10 +35,6 @@ class VideoComponent {
   }
 }
 
-const styles$ = new Promise((r) => {
-  loadCSS(`${window.hlx.codeBasePath}/common/modal/modal-component.css`, r);
-});
-
 const HIDE_MODAL_CLASS = 'modal-hidden';
 
 const createModal = () => {
@@ -79,22 +75,7 @@ const createModal = () => {
   };
 
   async function showModal(newContent, { beforeBanner, beforeIframe, classes = [] } = {}) {
-    await styles$;
-    await new Promise((resolve) => {
-      // because the styles$ is based on the on load event it's waiting for the file to be loaded
-      // but it is not waiting for the style to be applied
-      // (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#stylesheet_load_events)
-      // here were check if the styles are already applied by checking the calculated styles
-      // for one of the element
-      const interval = setInterval(() => {
-        const modalBackgroundStyles = window.getComputedStyle(modalBackground);
-        // the position should be set to 'fixed' by modal css file
-        if (modalBackgroundStyles.getPropertyValue('position') === 'fixed') {
-          clearInterval(interval);
-          resolve();
-        }
-      }, 100);
-    });
+    await loadCSS(`${window.hlx.codeBasePath}/common/modal/modal-component.css`);
     modalBackground.style = '';
     window.addEventListener('keydown', keyDownAction);
 
@@ -129,7 +110,7 @@ const createModal = () => {
 
         // eslint-disable-next-line no-unused-vars
         const modalVideoComponent = new VideoComponent(videoId);
-        videoOrIframe = createVideo(newContent, 'modal-video', {
+        videoOrIframe = createVideo(null, newContent, 'modal-video', {
           autoplay: 'any',
           disablePictureInPicture: true,
           loop: false,

@@ -3,8 +3,10 @@ import {
   unwrapDivs,
   getJsonFromUrl,
   getTextLabel,
+  decorateIcons,
 } from '../../scripts/common.js';
 import { setCarouselPosition, listenScroll } from '../../scripts/carousel-helper.js';
+import { isVideoLink, createVideo } from '../../scripts/video-helper.js';
 
 const blockName = 'v2-magazine-tabbed-carousel';
 const activeTabClass = `${blockName}__navigation-item--active`;
@@ -12,11 +14,29 @@ const activeCarouselClass = `${blockName}__carousel-item--active`;
 
 let autoScrollEnabled = true;
 const maxAmountOfTabs = 4;
-const intervalTime = 4000;
 
 const url = '/magazine-articles.json';
 const allArticles = await getJsonFromUrl(url);
 const articleArray = Object.values(allArticles.data);
+
+let activeVideo = null;
+
+const handleVideoAutoplay = (carouselItem, index) => {
+  if (!carouselItem || !carouselItem.children[index]) return;
+
+  const currentVideo = carouselItem.children[index].querySelector('video');
+
+  if (currentVideo) {
+    if (activeVideo && activeVideo !== currentVideo) {
+      activeVideo.pause();
+    }
+    currentVideo.play();
+    activeVideo = currentVideo;
+  } else if (activeVideo) {
+    activeVideo.pause();
+    activeVideo = null;
+  }
+};
 
 const updateActiveItem = (elements, entry) => {
   elements.forEach((el, index) => {
@@ -44,6 +64,8 @@ const updateActiveItem = (elements, entry) => {
           behavior: 'smooth',
         });
       }
+
+      handleVideoAutoplay(carouselItems, index);
     }
   });
 };
@@ -60,17 +82,36 @@ const buildTabNavigation = (carousel, title, category, index) => {
   return item;
 };
 
+const appendMediaToFigure = (figure, picture, links) => {
+  if (picture) {
+    figure.append(picture);
+  } else {
+    const videoLink = Array.from(links).find((link) => link.classList.contains('text-link-with-video'));
+    const isVideo = videoLink ? isVideoLink(videoLink) : false;
+    if (isVideo) {
+      createVideo(figure, videoLink.getAttribute('href'), `${blockName}__video`, {
+        muted: true,
+        autoplay: false,
+        loop: true,
+        playsinline: true,
+      });
+      videoLink.remove();
+    }
+  }
+};
+
 const buildTabItems = (carousel, navigation, items, articles) => {
   items.forEach((item, index) => {
     if (index <= (maxAmountOfTabs - 1)) {
       const picture = item.querySelector('picture');
+      const links = item.querySelectorAll('a');
+      const tabContent = Array.from(links).find((link) => !link.classList.contains('text-link-with-video'));
+      const articlePath = tabContent.href;
 
       const liItem = createElement('li', { classes: [`${blockName}__item`, `item-${index + 1}`] });
       const figure = createElement('figure', { classes: `${blockName}__figure` });
-      const tabContent = item.querySelector('a');
-      const articlePath = tabContent.href;
 
-      figure.append(picture);
+      appendMediaToFigure(figure, picture, links);
 
       const figureCaption = createElement('figcaption');
       figureCaption.append(tabContent);
@@ -126,6 +167,8 @@ const handleSwitch = (e, setAutoScroll) => {
 export default async function decorate(block) {
   let isFirstLoad = true;
   let scrollIntervalID;
+  const carouselContainerSection = block.closest('.section.v2-magazine-tabbed-carousel-container');
+  const intervalTime = parseInt(carouselContainerSection?.dataset.magazineTabbedCarouselIntervalTime || '6000', 10);
 
   const switchFullTexts = getTextLabel('autoscroll_switch');
 
@@ -179,4 +222,5 @@ export default async function decorate(block) {
   const elements = carouselItems.querySelectorAll(':scope > *');
   listenScroll(carouselItems, elements, updateActiveItem, 0.75);
   unwrapDivs(block);
+  decorateIcons(block);
 }

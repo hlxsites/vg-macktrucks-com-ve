@@ -10,6 +10,7 @@ import {
 } from '../../scripts/carousel-helper.js';
 
 const blockName = 'v2-truck-lineup';
+const tabContentClass = `.${blockName}__content`;
 
 function stripEmptyTags(main, child) {
   if (child !== main && child.innerHTML.trim() === '') {
@@ -71,8 +72,8 @@ function buildTabNavigation(tabItems, clickHandler) {
       }, 600);
     });
 
-    const tabContent = tabItem.querySelector(':scope > div');
-    const icon = tabContent.dataset.truckCarouselIcon;
+    const tabContent = tabItem.querySelector(tabContentClass);
+    const icon = tabContent && tabContent?.dataset.truckCarouselIcon;
     const svgIcon = icon ? `<span class="icon icon-${icon}"></span>` : '';
     button.innerHTML = `${tabContent.dataset.truckCarousel}${svgIcon}`;
     listItem.append(button);
@@ -164,8 +165,8 @@ export default async function decorate(block) {
 
   tabItems.forEach((tabItem) => {
     tabItem.classList.add(`${blockName}__desc-item`);
-    const tabContent = tabItem.querySelector(':scope > div');
-    const headings = tabContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    const tabContent = tabItem.querySelector(tabContentClass);
+    const headings = tabContent ? tabContent.querySelectorAll('h1, h2, h3, h4, h5, h6') : [];
     [...headings].forEach((heading) => heading.classList.add(`${blockName}__title`));
 
     // create div for image and append inside image div container

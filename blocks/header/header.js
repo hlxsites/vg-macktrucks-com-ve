@@ -126,7 +126,7 @@ const mobileActions = () => {
   const openMenuLabel = getTextLabel('Open menu');
 
   const actions = document.createRange().createContextualFragment(`
-    ${SEARCH_DISABLED === 'false' ? `
+    ${SEARCH_DISABLED.toLowerCase() === 'false' ? `
     <a
       href="/search"
       aria-label="${searchLabel}"
@@ -515,7 +515,7 @@ export default async function decorate(block) {
   };
 
   // add actions for search
-  if (SEARCH_DISABLED === 'false') {
+  if (SEARCH_DISABLED.toLowerCase() === 'false') {
     navContent.querySelector(`.${blockClass}__search-button`)?.addEventListener('click', () => {
       window.location.href = '/search';
     });
@@ -586,7 +586,7 @@ export default async function decorate(block) {
     const buttonsWithoutIcons = getAllElWithChildren([...actionsLinks.querySelectorAll('a')], '.icon', true);
     const loginLink = actionsLinks.querySelector('.header__action-item a[href*="login"]');
 
-    if (loginLink && LOGIN_DISABLED === 'true') loginLink.remove();
+    if (loginLink && LOGIN_DISABLED.toLowerCase() === 'true') loginLink.remove();
 
     if (isDesktop) {
       actionsLinksDesktopMountPoint.append(actionsLinks);

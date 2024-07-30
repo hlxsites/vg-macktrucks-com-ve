@@ -2,7 +2,7 @@ import { variantsClassesToBEM } from '../../scripts/common.js';
 
 export default async function decorate(block) {
   const blockName = 'v2-cards';
-  const variantClasses = ['no-background', 'horizontal', 'image-aspect-ratio-7-5', 'large-heading'];
+  const variantClasses = ['no-background', 'horizontal', 'image-aspect-ratio-7-5', 'large-heading', '4-cards-row'];
   variantsClassesToBEM(block.classList, variantClasses, blockName);
 
   const cardsItems = [...block.querySelectorAll(':scope > div')];
